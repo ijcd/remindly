@@ -7,7 +7,7 @@
 # General application configuration
 import Config
 
-# SETUP_TODO - ensure these details are correct
+# _SETUP_TODO - ensure these details are correct
 # Option descriptions:
 # app_name: This appears in your email layout and also your meta title tag
 # business_name: This appears in your landing page footer next to the copyright symbol
@@ -20,14 +20,14 @@ import Config
 # github_url: (deletable) The URL to your Github account (used in the landing page footer)
 # discord_url: (deletable) The URL to your Discord invititation (used in the landing page footer)
 config :remindly,
-  app_name: "Petal",
-  business_name: "Petal Pty Ltd",
-  support_email: "support@example.com",
-  mailer_default_from_name: "Support",
+  app_name: "Remindly",
+  business_name: "Remindly Pty Ltd",
+  support_email: "support@remindlyltd.com",
+  mailer_default_from_name: "Remindly Support",
   mailer_default_from_email: "support@example.com",
   logo_url_for_emails:
     "https://res.cloudinary.com/wickedsites/image/upload/v1643336799/petal/petal_logo_light_w5jvlg.png",
-  seo_description: "SaaS boilerplate template powered by Elixir's Phoenix and TailwindCSS",
+  seo_description: "Reminder app",
   twitter_url: "https://twitter.com/PetalFramework",
   github_url: "https://github.com/petalframework",
   discord_url: "https://discord.gg/exbwVbjAct"
@@ -126,7 +126,7 @@ config :ueberauth, Ueberauth,
     github: {Ueberauth.Strategy.Github, [default_scope: "user:email"]}
   ]
 
-# SETUP_TODO - If you want to use Github auth, replace MyGithubUsername with your Github username
+# _SETUP_TODO - If you want to use Github auth, replace MyGithubUsername with your Github username
 config :ueberauth, Ueberauth.Strategy.Github.OAuth,
   headers: [
     "user-agent": "MyGithubUsername"

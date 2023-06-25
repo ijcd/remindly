@@ -7,7 +7,7 @@ defmodule RemindlyWeb.CoreComponents do
   import RemindlyWeb.Helpers
   import RemindlyWeb.Gettext
 
-  # SETUP_TODO
+  # _SETUP_TODO
   # This module relies on the following images. Replace these images with your logos
   # /priv/static/images/logo_dark.svg
   # /priv/static/images/logo_light.svg
