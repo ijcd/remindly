@@ -104,7 +104,7 @@ defmodule Remindly.MixProject do
 
       # Testing
       {:wallaby, "~> 0.30", runtime: false, only: :test},
-      {:faker, "~> 0.17", only: [:test, :dev]},
+      {:faker, "~> 0.17", only: [:prod, :test, :dev]},
 
       # Jobs / Cron
       {:oban, "~> 2.15.0"},
