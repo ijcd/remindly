@@ -25,7 +25,7 @@ if config_env() == :prod do
 
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
-  config :petal_pro, PetalPro.Repo,
+  config :remindly, Remindly.Repo,
     ssl: false,
     socket_options: maybe_ipv6,
     url: database_url,
@@ -53,7 +53,7 @@ if config_env() == :prod do
 
   port = String.to_integer(System.get_env("PORT") || "4000")
 
-  config :petal_pro, PetalProWeb.Endpoint,
+  config :remindly, RemindlyWeb.Endpoint,
     server: true,
     url: [host: host, port: 80],
     http: [
@@ -66,7 +66,7 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
-  config :petal_pro, PetalPro.Mailer,
+  config :remindly, Remindly.Mailer,
     adapter: Swoosh.Adapters.AmazonSES,
     region: System.get_env("AWS_REGION"),
     access_key: System.get_env("AWS_ACCESS_KEY"),

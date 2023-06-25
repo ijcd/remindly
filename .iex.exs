@@ -1,4 +1,4 @@
-alias PetalPro.{
+alias Remindly.{
   Repo,
   Accounts,
   Accounts.User,
@@ -20,7 +20,7 @@ IEx.configure(inspect: [limit: :infinity])
 
 # Allow copy to clipboard
 # eg:
-#    iex(1)> Phoenix.Router.routes(PetalProWeb.Router) |> Helpers.copy
+#    iex(1)> Phoenix.Router.routes(RemindlyWeb.Router) |> Helpers.copy
 #    :ok
 defmodule Helpers do
   def copy(term) do

@@ -1,4 +1,4 @@
-defmodule PetalPro.Repo.Migrations.CreateOrgsMembers do
+defmodule Remindly.Repo.Migrations.CreateOrgsMembers do
   use Ecto.Migration
 
   def change do

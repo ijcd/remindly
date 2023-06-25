@@ -55,15 +55,15 @@
 - Authentication pages converted to live views
 - Upgraded fully from Hericons v1 to v2
 - `petal.gen.live` now uses the Data Table component
-- Tesla now uses the more secure Finch over Hackney (https://github.com/petalframework/petal_pro/issues/66)
-- Confirmation page will redirect to org invitations if invitation exists (https://github.com/petalframework/petal_pro/issues/68)
+- Tesla now uses the more secure Finch over Hackney (https://github.com/petalframework/remindly/issues/66)
+- Confirmation page will redirect to org invitations if invitation exists (https://github.com/petalframework/remindly/issues/68)
 - Removed Petal Enhance (it was more complex than we thought)
 
 ### Fixes
 
-- Redirect to `/app/orgs` if an invalid org slug is used (https://github.com/petalframework/petal_pro/issues/70)
-- When editing user via `/admin/users` - `patch_back_to_index` no longer crashes (https://github.com/petalframework/petal_pro/issues/61)
-- Always show Data Table filters (https://github.com/petalframework/petal_pro/issues/60)
+- Redirect to `/app/orgs` if an invalid org slug is used (https://github.com/petalframework/remindly/issues/70)
+- When editing user via `/admin/users` - `patch_back_to_index` no longer crashes (https://github.com/petalframework/remindly/issues/61)
+- Always show Data Table filters (https://github.com/petalframework/remindly/issues/60)
 
 ## 1.4.1 - 2022-11-15 16:30:00
 
@@ -145,7 +145,7 @@
 
 ### Changed
 
-- Simpler config access (`PetalPro.config(:app_name)` instead of `Application.get_env(:petal_pro, :app_name)`)
+- Simpler config access (`Remindly.config(:app_name)` instead of `Application.get_env(:remindly, :app_name)`)
 - Refactor <.layout> to take less props
 - Refactor dark/light mode system. Much simpler now and no longer needs cookies
 - Put Petal Pro Components in their own folder for easier future upgrades (can duplicate if you want to modify them)

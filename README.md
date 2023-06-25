@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://res.cloudinary.com/wickedsites/image/upload/v1650064156/petal/petal_pro_jbuqvj.png" height="128">
+  <img src="https://res.cloudinary.com/wickedsites/image/upload/v1650064156/petal/remindly_jbuqvj.png" height="128">
 
   <p align="center">
     Launch beautiful Phoenix web apps with this boilerplate project.
@@ -21,7 +21,7 @@ We recommend downloading the latest version from the "Releases" section. The `ma
 - You have Elixir & Erlang installed
 - You have Postgres installed and running (optional - see "Using Docker for Postgres" below
 
-If you don't meet this assumptions you can read our [comprehensive install instructions](https://docs.petal.build/petal-pro-documentation/fundamentals/installation).
+If you don't meet this assumptions you can read our [comprehensive install instructions](https://docs.petal.build/remindly-documentation/fundamentals/installation).
 
 **The steps**
 
@@ -33,7 +33,7 @@ If you don't meet this assumptions you can read our [comprehensive install instr
 **Moving forward:**
 
 - Do a global search for `SETUP_TODO` and follow the instructions to mold the boilerplate to your brand
-- Optional: Follow our tutorial ["Creating a web app from start to finish"](https://docs.petal.build/petal-pro-documentation/guides/creating-a-web-app-from-start-to-finish) to get an overview of Petal Pro
+- Optional: Follow our tutorial ["Creating a web app from start to finish"](https://docs.petal.build/remindly-documentation/guides/creating-a-web-app-from-start-to-finish) to get an overview of Petal Pro
 
 ## Using Docker for Postgres
 
@@ -65,7 +65,7 @@ Run `mix rename CurrentName NewName current_name new_name`.
 For example:
 
 ```
-mix rename PetalPro MyTwitterClone
+mix rename Remindly MyTwitterClone
 ```
 
 Note that it is not recommended to rename the project if you wish to keep pulling in Petal Pro updates. This is because it can be much harder to update after you have renamed. [Here is a guide](https://docs.saaspegasus.com/upgrading.html#using-branches-recommended) on how to keep up to date based on a similar framework in Python.

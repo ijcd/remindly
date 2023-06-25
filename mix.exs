@@ -1,11 +1,11 @@
-defmodule PetalPro.MixProject do
+defmodule Remindly.MixProject do
   use Mix.Project
 
   @version "1.5.2"
 
   def project do
     [
-      app: :petal_pro,
+      app: :remindly,
       version: @version,
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -29,7 +29,7 @@ defmodule PetalPro.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {PetalPro.Application, []},
+      mod: {Remindly.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

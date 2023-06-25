@@ -41,7 +41,7 @@ defmodule Util.HashId do
     # For some reason, if we use the whole secret_key_base, adding salt_addition to the end of it has no effect.
     # We want salt_addition to allow devs to encode/decode with different salts.
     salt =
-      String.slice(Application.get_env(:petal_pro, PetalProWeb.Endpoint)[:secret_key_base], 0..9) <>
+      String.slice(Application.get_env(:remindly, RemindlyWeb.Endpoint)[:secret_key_base], 0..9) <>
         salt_addition
 
     Hashids.new(

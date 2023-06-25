@@ -1,13 +1,13 @@
-defmodule PetalPro.AccountsFixtures do
+defmodule Remindly.AccountsFixtures do
   @totp_secret Base.decode32!("PTEPUGZ7DUWTBGMW4WLKB6U63MGKKMCA")
 
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `PetalPro.Accounts` context.
+  entities via the `Remindly.Accounts` context.
   """
-  alias PetalPro.Accounts
-  alias PetalPro.Accounts.User
-  alias PetalPro.Repo
+  alias Remindly.Accounts
+  alias Remindly.Accounts.User
+  alias Remindly.Repo
 
   def valid_totp_secret, do: @totp_secret
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"

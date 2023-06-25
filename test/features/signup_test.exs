@@ -1,10 +1,10 @@
-defmodule PetalPro.Features.SignupTest do
+defmodule Remindly.Features.SignupTest do
   use ExUnit.Case
   use Wallaby.Feature
   alias Wallaby.Query
   import Wallaby.Query
-  import PetalPro.AccountsFixtures
-  use PetalProWeb, :verified_routes
+  import Remindly.AccountsFixtures
+  use RemindlyWeb, :verified_routes
 
   feature "users can create an account", %{session: session} do
     session =
