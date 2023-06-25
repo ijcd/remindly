@@ -21,6 +21,16 @@ defmodule Remindly.Reminders do
     Repo.all(Reminder)
   end
 
+  def list_overdue_reminders do
+    today = Timex.now() |> Timex.to_date()
+
+    Repo.all(
+      from r in Reminder,
+        where: r.due_date < ^today,
+        where: r.is_done == false
+    )
+  end
+
   @doc """
   Gets a single reminder.
 

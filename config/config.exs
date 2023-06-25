@@ -99,6 +99,7 @@ config :remindly, Oban,
     {Oban.Plugins.Pruner, max_age: 3600 * 24},
     {Oban.Plugins.Cron,
      crontab: [
+       {"@daily", Remindly.Workers.ReminderWorker}
        # {"@daily", Remindly.Workers.ExampleWorker}
        # {"* * * * *", EveryMinuteWorker},
        # {"0 * * * *", EveryHourWorker},
