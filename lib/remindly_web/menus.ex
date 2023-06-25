@@ -11,7 +11,8 @@ defmodule RemindlyWeb.Menus do
     do: [
       %{label: gettext("Features"), path: "/#features"},
       %{label: gettext("Testimonials"), path: "/#testimonials"},
-      %{label: gettext("Pricing"), path: "/#pricing"}
+      %{label: gettext("Pricing"), path: "/#pricing"},
+      %{label: gettext("About"), path: "/about"}
     ]
 
   # Signed out main menu
