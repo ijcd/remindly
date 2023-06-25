@@ -25,7 +25,8 @@ defmodule RemindlyWeb.Menus do
       build_menu(
         [
           :dashboard,
-          :orgs
+          :orgs,
+          :reminders
         ],
         current_user
       )
@@ -267,5 +268,15 @@ defmodule RemindlyWeb.Menus do
         icon: :clipboard_document_list
       }
     end
+  end
+
+  # Replace the get_link(:dashboard, ...) function with this:
+  def get_link(:reminders = name, _current_user) do
+    %{
+      name: name,
+      label: gettext("Reminders"),
+      path: ~p"/app",
+      icon: :clock
+    }
   end
 end
