@@ -61,6 +61,12 @@ defmodule RemindlyWeb.Router do
         {RemindlyWeb.OrgOnMountHooks, :assign_org_data}
       ] do
       # page_builder:live:authenticated
+      live "/reminders", ReminderLive.Index, :index
+      live "/reminders/new", ReminderLive.Index, :new
+      live "/reminders/:id/edit", ReminderLive.Index, :edit
+
+      live "/reminders/:id", ReminderLive.Show, :show
+      live "/reminders/:id/show/edit", ReminderLive.Show, :edit
       live "/", DashboardLive
       live "/users/onboarding", UserOnboardingLive
       live "/users/edit-profile", EditProfileLive

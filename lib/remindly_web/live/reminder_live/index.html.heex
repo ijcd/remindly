@@ -3,7 +3,7 @@
     <.button
       link_type="live_patch"
       label="New Reminder"
-      to={~p"/reminders/new"}
+      to={~p"/app/reminders/new"}
     />
   </.page_header>
 
@@ -31,7 +31,7 @@
         size="xs"
         link_type="live_redirect"
         label="Show"
-        to={~p"/reminders/#{reminder}"}
+        to={~p"/app/reminders/#{reminder}"}
       />
 
       <.button
@@ -40,7 +40,7 @@
         size="xs"
         link_type="live_patch"
         label="Edit"
-        to={~p"/reminders/#{reminder}/edit"}
+        to={~p"/app/reminders/#{reminder}/edit"}
       />
 
       <.button

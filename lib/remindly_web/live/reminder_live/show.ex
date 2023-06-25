@@ -18,7 +18,7 @@ defmodule RemindlyWeb.ReminderLive.Show do
 
   @impl true
   def handle_event("close_modal", _, socket) do
-    {:noreply, push_patch(socket, to: ~p"/reminders/#{socket.assigns.reminder}")}
+    {:noreply, push_patch(socket, to: ~p"/app/reminders/#{socket.assigns.reminder}")}
   end
 
   defp page_title(:show), do: "Show Reminder"

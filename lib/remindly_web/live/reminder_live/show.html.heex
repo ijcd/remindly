@@ -3,13 +3,13 @@
     <.button
       link_type="live_patch"
       label="Edit Reminder"
-      to={~p"/reminders/#{@reminder}/show/edit"}
+      to={~p"/app/reminders/#{@reminder}/show/edit"}
     />
 
     <.button
       link_type="live_redirect"
       label="Back"
-      to={~p"/reminders"}
+      to={~p"/app/reminders"}
     />
   </.page_header>
 
@@ -20,7 +20,7 @@
         id={@reminder.id || :new}
         action={@live_action}
         reminder={@reminder}
-        return_to={~p"/reminders/#{@reminder}"}
+        return_to={~p"/app/reminders/#{@reminder}"}
       />
     </.modal>
   <% end %>

@@ -47,13 +47,13 @@ defmodule RemindlyWeb.ReminderLive.Index do
   end
 
   defp current_index_path(socket) do
-    ~p"/reminders?#{socket.assigns[:index_params] || []}"
+    ~p"/app/reminders?#{socket.assigns[:index_params] || []}"
   end
 
   @impl true
   def handle_event("update_filters", params, socket) do
     query_params = DataTable.build_filter_params(socket.assigns.meta.flop, params)
-    {:noreply, push_patch(socket, to: ~p"/reminders?#{query_params}")}
+    {:noreply, push_patch(socket, to: ~p"/app/reminders?#{query_params}")}
   end
 
   @impl true
