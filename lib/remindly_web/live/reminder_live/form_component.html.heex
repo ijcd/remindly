@@ -1,0 +1,24 @@
+<div>
+  <.form
+    :let={f}
+    for={@changeset}
+    id="reminder-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save">
+    
+    <.form_field type="text_input" form={f} field={:label} />
+    
+    <.form_field type="date_select" form={f} field={:due_date} />
+    
+    <.form_field type="checkbox" form={f} field={:is_done} />
+    
+    <div class="flex justify-end">
+      <.button
+        type="submit"
+        phx-disable-with="Saving..."
+        label="Save"
+      />
+    </div>
+  </.form>
+</div>

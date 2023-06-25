@@ -1,0 +1,59 @@
+<.container class="py-16">
+  <.page_header title="Listing Reminders">
+    <.button
+      link_type="live_patch"
+      label="New Reminder"
+      to={~p"/reminders/new"}
+    />
+  </.page_header>
+
+  <%= if @live_action in [:new, :edit] do %>
+    <.modal title={@page_title}>
+      <.live_component
+        module={RemindlyWeb.ReminderLive.FormComponent}
+        id={@reminder.id || :new}
+        action={@live_action}
+        reminder={@reminder}
+        return_to={@return_to}
+      />
+    </.modal>
+  <% end %>
+
+  <.data_table :if={@index_params} meta={@meta} items={@reminders}>
+    <:if_empty>No reminders found</:if_empty>
+    <:col field={:label} sortable />
+    <:col field={:due_date} sortable />
+    <:col field={:is_done} sortable />
+    <:col label="Actions" :let={reminder} align_right>
+      <.button
+        color="primary"
+        variant="outline"
+        size="xs"
+        link_type="live_redirect"
+        label="Show"
+        to={~p"/reminders/#{reminder}"}
+      />
+
+      <.button
+        color="white"
+        variant="outline"
+        size="xs"
+        link_type="live_patch"
+        label="Edit"
+        to={~p"/reminders/#{reminder}/edit"}
+      />
+
+      <.button
+        color="danger"
+        variant="outline"
+        link_type="a"
+        to="#"
+        size="xs"
+        label="Delete"
+        phx-click="delete"
+        phx-value-id={reminder.id}
+        data-confirm="Are you sure?"
+      />
+    </:col>
+  </.data_table>
+</.container>
