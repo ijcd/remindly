@@ -1,65 +1,68 @@
-<.container class="py-16">
-  <.page_header title="Listing Reminders">
-    <.button link_type="live_patch" label="New Reminder" to={~p"/app/reminders/new"} />
-  </.page_header>
+<.layout current_page={:reminders} current_user={@current_user} type="sidebar">
+  <.container class="py-16">
+    <.page_header title="Listing Reminders">
+      <.button link_type="live_patch" label="New Reminder" to={~p"/app/reminders/new"} />
+    </.page_header>
 
-  <%= if @live_action in [:new, :edit] do %>
-    <.modal title={@page_title}>
-      <.live_component
-        module={RemindlyWeb.ReminderLive.FormComponent}
-        id={@reminder.id || :new}
-        action={@live_action}
-        reminder={@reminder}
-        return_to={@return_to}
-        current_user={@current_user}
-      />
-    </.modal>
-  <% end %>
-
-  <.data_table :if={@index_params} meta={@meta} items={@reminders}>
-    <:if_empty>No reminders found</:if_empty>
-    <:col :let={reminder} field={:is_done} sortable label="Done?">
-      <div class="cursor-pointer" phx-click="toggle_reminder" phx-value-id={reminder.id}>
-        <.icon
-          name={if reminder.is_done, do: :check, else: :x_mark}
-          class="w-5 h-5 phx-click-loading:hidden"
+    <%= if @live_action in [:new, :edit] do %>
+      <.modal title={@page_title}>
+        <.live_component
+          module={RemindlyWeb.ReminderLive.FormComponent}
+          id={@reminder.id || :new}
+          action={@live_action}
+          reminder={@reminder}
+          return_to={@return_to}
+          current_user={@current_user}
         />
-        <.spinner class="hidden phx-click-loading:block" />
-      </div>
-    </:col>
-    <:col field={:label} sortable />
-    <:col field={:due_date} sortable />
-    <:col field={:is_done} sortable />
-    <:col :let={reminder} label="Actions" align_right>
-      <.button
-        color="primary"
-        variant="outline"
-        size="xs"
-        link_type="live_redirect"
-        label="Show"
-        to={~p"/app/reminders/#{reminder}"}
-      />
+      </.modal>
+    <% end %>
 
-      <.button
-        color="white"
-        variant="outline"
-        size="xs"
-        link_type="live_patch"
-        label="Edit"
-        to={~p"/app/reminders/#{reminder}/edit"}
-      />
+    <.data_table :if={@index_params} meta={@meta} items={@reminders}>
+      <:if_empty>No reminders found</:if_empty>
+      <:col :let={reminder} field={:is_done} sortable label="Done?">
+        <div class="cursor-pointer" phx-click="toggle_reminder" phx-value-id={reminder.id}>
+          <.icon
+            name={if reminder.is_done, do: :check, else: :x_mark}
+            class="w-5 h-5 phx-click-loading:hidden"
+          />
+          <.spinner class="hidden phx-click-loading:block" />
+        </div>
+      </:col>
+      <:col field={:label} sortable />
+      <:col field={:due_date} sortable />
+      <:col field={:is_done} sortable />
+      <:col :let={reminder} label="Actions" align_right>
+        <.button
+          color="primary"
+          variant="outline"
+          size="xs"
+          link_type="live_redirect"
+          label="Show"
+          to={~p"/app/reminders/#{reminder}"}
+        />
 
-      <.button
-        color="danger"
-        variant="outline"
-        link_type="a"
-        to="#"
-        size="xs"
-        label="Delete"
-        phx-click="delete"
-        phx-value-id={reminder.id}
-        data-confirm="Are you sure?"
-      />
-    </:col>
-  </.data_table>
-</.container>
+        <.button
+          color="white"
+          variant="outline"
+          size="xs"
+          link_type="live_patch"
+          label="Edit"
+          to={~p"/app/reminders/#{reminder}/edit"}
+        />
+
+        <.button
+          color="danger"
+          variant="outline"
+          link_type="a"
+          to="#"
+          size="xs"
+          label="Delete"
+          phx-click="delete"
+          phx-value-id={reminder.id}
+          data-confirm="Are you sure?"
+        />
+      </:col>
+    </.data_table>
+  </.container>
+</.layout>
+```

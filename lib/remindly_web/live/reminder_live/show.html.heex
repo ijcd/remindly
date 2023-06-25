@@ -1,60 +1,57 @@
-<.container class="py-16">
-  <.page_header title="Show Reminder">
-    <.button
-      link_type="live_patch"
-      label="Edit Reminder"
-      to={~p"/app/reminders/#{@reminder}/show/edit"}
-    />
-
-    <.button
-      link_type="live_redirect"
-      label="Back"
-      to={~p"/app/reminders"}
-    />
-  </.page_header>
-
-  <%= if @live_action in [:new, :edit] do %>
-    <.modal title={@page_title}>
-      <.live_component
-        module={RemindlyWeb.ReminderLive.FormComponent}
-        id={@reminder.id || :new}
-        action={@live_action}
-        reminder={@reminder}
-        return_to={~p"/app/reminders/#{@reminder}"}
+<.layout current_page={:reminders} current_user={@current_user} type="sidebar">
+  <.container class="py-16">
+    <.page_header title="Show Reminder">
+      <.button
+        link_type="live_patch"
+        label="Edit Reminder"
+        to={~p"/app/reminders/#{@reminder}/show/edit"}
       />
-    </.modal>
-  <% end %>
 
-  <div class="max-w-lg">
-    <div class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-    
-      <div class="sm:col-span-1">
-        <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
-          Label
+      <.button link_type="live_redirect" label="Back" to={~p"/app/reminders"} />
+    </.page_header>
+
+    <%= if @live_action in [:new, :edit] do %>
+      <.modal title={@page_title}>
+        <.live_component
+          module={RemindlyWeb.ReminderLive.FormComponent}
+          id={@reminder.id || :new}
+          action={@live_action}
+          reminder={@reminder}
+          return_to={~p"/app/reminders/#{@reminder}"}
+        />
+      </.modal>
+    <% end %>
+
+    <div class="max-w-lg">
+      <div class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+        <div class="sm:col-span-1">
+          <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
+            Label
+          </div>
+          <div class="mt-1 text-sm text-gray-900 dark:text-gray-100">
+            <%= @reminder.label %>
+          </div>
         </div>
-        <div class="mt-1 text-sm text-gray-900 dark:text-gray-100">
-          <%= @reminder.label %>
+
+        <div class="sm:col-span-1">
+          <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
+            Due date
+          </div>
+          <div class="mt-1 text-sm text-gray-900 dark:text-gray-100">
+            <%= @reminder.due_date %>
+          </div>
+        </div>
+
+        <div class="sm:col-span-1">
+          <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
+            Is done
+          </div>
+          <div class="mt-1 text-sm text-gray-900 dark:text-gray-100">
+            <%= @reminder.is_done %>
+          </div>
         </div>
       </div>
-    
-      <div class="sm:col-span-1">
-        <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
-          Due date
-        </div>
-        <div class="mt-1 text-sm text-gray-900 dark:text-gray-100">
-          <%= @reminder.due_date %>
-        </div>
-      </div>
-    
-      <div class="sm:col-span-1">
-        <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
-          Is done
-        </div>
-        <div class="mt-1 text-sm text-gray-900 dark:text-gray-100">
-          <%= @reminder.is_done %>
-        </div>
-      </div>
-    
     </div>
-  </div>
-</.container>
+  </.container>
+</.layout>
+```
