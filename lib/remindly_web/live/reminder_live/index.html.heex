@@ -20,7 +20,11 @@
     <:if_empty>No reminders found</:if_empty>
     <:col :let={reminder} field={:is_done} sortable label="Done?">
       <div class="cursor-pointer" phx-click="toggle_reminder" phx-value-id={reminder.id}>
-        <.icon name={if reminder.is_done, do: :check, else: :x_mark} class="w-5 h-5" />
+        <.icon
+          name={if reminder.is_done, do: :check, else: :x_mark}
+          class="w-5 h-5 phx-click-loading:hidden"
+        />
+        <.spinner class="hidden phx-click-loading:block" />
       </div>
     </:col>
     <:col field={:label} sortable />
