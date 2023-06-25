@@ -35,6 +35,7 @@ defmodule RemindlyWeb.Router do
     pipe_through [:browser]
 
     # page_builder:static:public
+    get "/about", PageController, :about
     get "/", PageController, :landing_page
     get "/privacy", PageController, :privacy
     get "/license", PageController, :license
