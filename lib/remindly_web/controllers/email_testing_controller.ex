@@ -16,7 +16,8 @@ defmodule RemindlyWeb.EmailTestingController do
     "reset_password",
     "change_email",
     "org_invitation",
-    "passwordless_pin"
+    "passwordless_pin",
+    "reminder"
   ]
 
   # Keep this to copy elements from it into your emails
@@ -44,6 +45,16 @@ defmodule RemindlyWeb.EmailTestingController do
 
   defp generate_email("passwordless_pin", current_user) do
     Email.passwordless_pin(current_user.email, "1234")
+  end
+
+  defp generate_email("reminder", current_user) do
+    reminder = %Remindly.Reminders.Reminder{
+      user_id: current_user.id,
+      label: "Do the washing.",
+      due_date: Timex.now() |> Timex.to_date()
+    }
+
+    Email.reminder(current_user.email, reminder, "/")
   end
 
   def index(conn, _params) do

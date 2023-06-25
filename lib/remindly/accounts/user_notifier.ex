@@ -49,6 +49,14 @@ defmodule Remindly.Accounts.UserNotifier do
     |> deliver()
   end
 
+  def deliver_reminder(reminder) do
+    reminder = Remindly.Repo.preload(reminder, :user)
+    url = RemindlyWeb.Router.Helpers.reminder_show_url(RemindlyWeb.Endpoint, :show, reminder)
+
+    Email.reminder(reminder.user.email, reminder, url)
+    |> deliver()
+  end
+
   defp deliver(email) do
     with {:ok, _metadata} <- Mailer.deliver(email) do
       # Returning the email helps with testing

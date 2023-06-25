@@ -59,6 +59,14 @@ defmodule Remindly.Email do
     |> premail()
   end
 
+  def reminder(email, reminder, reminder_url) do
+    base_email()
+    |> to(email)
+    |> subject("Reminder!")
+    |> render_body("reminder.html", %{reminder: reminder, url: reminder_url})
+    |> premail()
+  end
+
   # For when you don't need any HTML and just want to send text
   def text_only_email(to_email, subject, body, cc \\ []) do
     new()
