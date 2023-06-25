@@ -41,6 +41,8 @@ defmodule RemindlyWeb.ReminderLive.FormComponent do
   end
 
   defp save_reminder(socket, :new, reminder_params) do
+    reminder_params = Map.put(reminder_params, "user_id", socket.assigns.current_user.id)
+
     case Reminders.create_reminder(reminder_params) do
       {:ok, _reminder} ->
         {:noreply,

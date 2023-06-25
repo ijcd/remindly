@@ -24,6 +24,7 @@ defmodule Remindly.Accounts.User do
     field :current_org, :map, virtual: true
 
     many_to_many :orgs, Org, join_through: "orgs_memberships", unique: true
+    has_many :reminders, Remindly.Reminders.Reminder
 
     timestamps()
   end

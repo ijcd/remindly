@@ -35,7 +35,7 @@ defmodule RemindlyWeb.ReminderLive.Index do
   defp apply_action(socket, :new, _params) do
     socket
     |> assign(:page_title, "New Reminder")
-    |> assign(:reminder, %Reminder{})
+    |> assign(:reminder, %Reminder{due_date: Timex.now() |> Timex.to_date()})
     |> assign(:return_to, current_index_path(socket))
   end
 
@@ -74,8 +74,21 @@ defmodule RemindlyWeb.ReminderLive.Index do
     {:noreply, push_patch(socket, to: current_index_path(socket))}
   end
 
+  @impl true
+  def handle_event("toggle_reminder", %{"id" => reminder_id}, socket) do
+    reminder = Reminders.get_reminder!(reminder_id)
+
+    case Reminders.update_reminder(reminder, %{is_done: !reminder.is_done}) do
+      {:ok, _reminder} ->
+        {:noreply, assign_reminders(socket, socket.assigns.index_params)}
+
+      {:error, _changeset} ->
+        {:noreply, put_flash(socket, :error, "Something went wrong.")}
+    end
+  end
+
   defp assign_reminders(socket, params) do
-    starting_query = Reminder
+    starting_query = Ecto.assoc(socket.assigns.current_user, :reminders)
     {reminders, meta} = DataTable.search(starting_query, params, @data_table_opts)
     assign(socket, reminders: reminders, meta: meta)
   end

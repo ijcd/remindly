@@ -6,7 +6,8 @@ defmodule Remindly.Reminders.Reminder do
     field :due_date, :date
     field :is_done, :boolean, default: false
     field :label, :string
-    field :user_id, :id
+
+    belongs_to :user, Remindly.Accounts.User
 
     timestamps()
   end
@@ -14,7 +15,7 @@ defmodule Remindly.Reminders.Reminder do
   @doc false
   def changeset(reminder, attrs) do
     reminder
-    |> cast(attrs, [:label, :due_date, :is_done])
-    |> validate_required([:label, :due_date, :is_done])
+    |> cast(attrs, [:label, :due_date, :is_done, :user_id])
+    |> validate_required([:label, :due_date, :is_done, :user_id])
   end
 end

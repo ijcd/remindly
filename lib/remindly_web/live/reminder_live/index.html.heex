@@ -1,10 +1,6 @@
 <.container class="py-16">
   <.page_header title="Listing Reminders">
-    <.button
-      link_type="live_patch"
-      label="New Reminder"
-      to={~p"/app/reminders/new"}
-    />
+    <.button link_type="live_patch" label="New Reminder" to={~p"/app/reminders/new"} />
   </.page_header>
 
   <%= if @live_action in [:new, :edit] do %>
@@ -15,16 +11,22 @@
         action={@live_action}
         reminder={@reminder}
         return_to={@return_to}
+        current_user={@current_user}
       />
     </.modal>
   <% end %>
 
   <.data_table :if={@index_params} meta={@meta} items={@reminders}>
     <:if_empty>No reminders found</:if_empty>
+    <:col :let={reminder} field={:is_done} sortable label="Done?">
+      <div class="cursor-pointer" phx-click="toggle_reminder" phx-value-id={reminder.id}>
+        <.icon name={if reminder.is_done, do: :check, else: :x_mark} class="w-5 h-5" />
+      </div>
+    </:col>
     <:col field={:label} sortable />
     <:col field={:due_date} sortable />
     <:col field={:is_done} sortable />
-    <:col label="Actions" :let={reminder} align_right>
+    <:col :let={reminder} label="Actions" align_right>
       <.button
         color="primary"
         variant="outline"
