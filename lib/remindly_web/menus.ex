@@ -275,7 +275,7 @@ defmodule RemindlyWeb.Menus do
     %{
       name: name,
       label: gettext("Reminders"),
-      path: ~p"/app",
+      path: ~p"/app/reminders",
       icon: :clock
     }
   end

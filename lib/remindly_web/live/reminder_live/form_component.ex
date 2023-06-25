@@ -44,7 +44,15 @@ defmodule RemindlyWeb.ReminderLive.FormComponent do
     reminder_params = Map.put(reminder_params, "user_id", socket.assigns.current_user.id)
 
     case Reminders.create_reminder(reminder_params) do
-      {:ok, _reminder} ->
+      {:ok, reminder} ->
+        Remindly.Logs.log("create_reminder", %{
+          user: socket.assigns.current_user,
+          metadata: %{
+            reminder_id: reminder.id,
+            reminder_label: reminder.label
+          }
+        })
+
         {:noreply,
          socket
          |> put_flash(:info, "Reminder created successfully")

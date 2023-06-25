@@ -79,7 +79,17 @@ defmodule RemindlyWeb.ReminderLive.Index do
     reminder = Reminders.get_reminder!(reminder_id)
 
     case Reminders.update_reminder(reminder, %{is_done: !reminder.is_done}) do
-      {:ok, _reminder} ->
+      {:ok, reminder} ->
+        if reminder.is_done do
+          Remindly.Logs.log("complete_reminder", %{
+            user: socket.assigns.current_user,
+            metadata: %{
+              reminder_id: reminder.id,
+              reminder_label: reminder.label
+            }
+          })
+        end
+
         {:noreply, assign_reminders(socket, socket.assigns.index_params)}
 
       {:error, _changeset} ->

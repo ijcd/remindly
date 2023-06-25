@@ -28,7 +28,9 @@ defmodule Remindly.Logs.Log do
     "totp.regenerate_backup_codes",
     "totp.validate",
     "totp.validate_with_backup_code",
-    "totp.invalid_code_used"
+    "totp.invalid_code_used",
+    "create_reminder",
+    "complete_reminder"
   ]
 
   schema "logs" do

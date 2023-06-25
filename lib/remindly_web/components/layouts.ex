@@ -11,7 +11,7 @@ defmodule RemindlyWeb.Layouts do
 
   def title(conn) do
     if is_public_page(conn.request_path) do
-      Logger.warn(
+      Logger.warning(
         "Warning: no title defined for path #{conn.request_path}. Defaulting to #{app_name()}. Assign `page_title` in controller action or live view mount to fix."
       )
     end
@@ -26,7 +26,7 @@ defmodule RemindlyWeb.Layouts do
       Remindly.config(:seo_description)
     else
       if is_public_page(conn.request_path) do
-        Logger.warn(
+        Logger.warning(
           "Warning: no meta description for public path #{conn.request_path}. Assign `meta_description` in controller action or live view mount to fix."
         )
       end
